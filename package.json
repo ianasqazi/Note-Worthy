@@ -1,0 +1,25 @@
+{
+  "name": "note-worthy",
+  "version": "1.0.0",
+  "description": "Manage your own NOTES !!! ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianasqazi/Note-Worthy.git"
+  },
+  "keywords": [
+    "notes"
+  ],
+  "author": "Anas Qazi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianasqazi/Note-Worthy/issues"
+  },
+  "homepage": "https://github.com/ianasqazi/Note-Worthy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
