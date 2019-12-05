@@ -23,7 +23,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "public", "index.html"));
-
 });
 
 
@@ -36,7 +35,7 @@ app.get("/notes", function(req, res) {
 
 app.get("/api/notes", function(req, res) {
     
-  fs.readFile("public/db/db.json", "utf8", function(error,data) {
+  fs.readFile("public/db/db.json", function(error,data) {
       if (error) {
         throw error;
       };
@@ -60,11 +59,11 @@ app.post('/api/notes', (req, res) => {
       let newNote = {
         title: req.body.title,
         text: req.body.text,
-        id: shortid.generate(),
+        id: shortid.generate()
       }
 
       allNotes.push(newNote);
-  
+      
       fs.writeFile("public/db/db.json", JSON.stringify(allNotes, null, 2), (error) => {
         if (error) {
           throw error;
@@ -97,7 +96,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
     searchChosen(chosen,allNotes);
 
-    fs.writeFile('public/db/db.json', JSON.stringify(allNotes, null, 2), (err) => {
+    fs.writeFile("public/db/db.json", JSON.stringify(allNotes, null, 2), (err) => {
       if (err) throw err;
       res.send('200');
     });
