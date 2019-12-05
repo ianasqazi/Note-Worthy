@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/ianasqazi/Note-Worthy#readme",
   "dependencies": {
+    "clean-deep": "^3.2.0",
+    "deep-cleaner": "^1.2.1",
     "express": "^4.17.1",
+    "remove-one": "^1.0.1",
     "shortid": "^2.2.15"
   },
   "devDependencies": {

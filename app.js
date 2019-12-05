@@ -4,6 +4,12 @@ const express = require("express");
 const path = require("path");
 const fs = require('fs');
 const shortid = require("shortid");
+// const cleaner = require("deep-cleaner");
+// const removeOne = require('remove-one')
+
+
+// const cleanDeep = require('clean-deep');
+
 
 
 var dbFile = require("./public/db/db.json");
@@ -73,6 +79,58 @@ app.post('/api/notes', (req, res) => {
 
   });
 
+//DELETE 
+
+app.delete('/api/notes/:id', (req, res) => {
+  let chosen = req.params.id;
+
+
+  fs.readFile("public/db/db.json", function (err,data) {
+    if (err) throw err;
+    let allNotes = JSON.parse(data);
+    
+    function search(chosen, allNotes){
+      for (var i=0; i < allNotes.length; i++) {
+
+          if (allNotes[i].id === chosen) {
+              console.log(allNotes[i]);
+              // cleaner(allNotes,allNotes[i]);
+              // cleanDeep(allNotes[i]);
+              // removeOne(allNotes, (n) => n === allNotes[i]);
+              // const result = removeOne(array, (n) => n === 1)
+              allNotes.splice(i, 1);  
+              // console.log(allNotes);     
+          }
+
+      }
+    }
+
+    search(chosen,allNotes);
+    // console.log(allNotes);
+
+    fs.writeFile('public/db/db.json', JSON.stringify(allNotes, null, 2), (err) => {
+      if (err) throw err;
+      res.send('200');
+    });
+
+  });
+
+});
+
+
+// app.get("/api/characters/:character", function(req, res) {
+//   var chosen = req.params.character;
+
+//   console.log(chosen);
+
+//   for (var i = 0; i < characters.length; i++) {
+//     if (chosen === characters[i].routeName) {
+//       return res.json(characters[i]);
+//     }
+//   }
+
+//   return res.json(false);
+// });
 
 
 // Starts the server to begin listening
