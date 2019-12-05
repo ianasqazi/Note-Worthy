@@ -3,17 +3,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require('fs');
-const shortid = require("shortid");
-// const cleaner = require("deep-cleaner");
-// const removeOne = require('remove-one')
-
-
-// const cleanDeep = require('clean-deep');
-
-
-
-var dbFile = require("./public/db/db.json");
-
+const shortid = require("shortid"); // library for creating a unique id 
 
 // Sets up the Express App
 // =============================================================
@@ -23,8 +13,7 @@ var PORT = 3000;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 
 // Routes
@@ -42,36 +31,44 @@ app.get("/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "public", "notes.html"));
 });
 
-// GET : Displays all notes
+// GET : Displays all Notes
+// =============================================================
+
 app.get("/api/notes", function(req, res) {
     
-  fs.readFile("public/db/db.json", "utf8", function(err,data) {
-      if (err) throw err;
+  fs.readFile("public/db/db.json", "utf8", function(error,data) {
+      if (error) {
+        throw error;
+      };
       let allNotes = JSON.parse(data);
       return res.json(allNotes);
     });
  
 });
 
-// POST 
-// Create New Note - takes in JSON input
+// POST : Save NEW notes in db
+// =============================================================
+
 app.post('/api/notes', (req, res) => {
   
-    fs.readFile('public/db/db.json',(err, data) => {
-      if (err) throw err;
-
+    fs.readFile("public/db/db.json", function(error, data) {
+      if (error) {
+        throw error;
+      };
       let allNotes = JSON.parse(data);
 
       let newNote = {
         title: req.body.title,
         text: req.body.text,
-        id: shortid.generate()
+        id: shortid.generate(),
       }
 
       allNotes.push(newNote);
   
-      fs.writeFile('public/db/db.json', JSON.stringify(allNotes, null, 2), (err) => {
-        if (err) throw err;
+      fs.writeFile("public/db/db.json", JSON.stringify(allNotes, null, 2), (error) => {
+        if (error) {
+          throw error;
+        };
         res.send('200');
       });
 
@@ -79,34 +76,26 @@ app.post('/api/notes', (req, res) => {
 
   });
 
-//DELETE 
+// DELETE : Deletes the selected note from ID and render remaining notes
+// =============================================================
 
 app.delete('/api/notes/:id', (req, res) => {
   let chosen = req.params.id;
-
 
   fs.readFile("public/db/db.json", function (err,data) {
     if (err) throw err;
     let allNotes = JSON.parse(data);
     
-    function search(chosen, allNotes){
+    function searchChosen(chosen, allNotes) {
       for (var i=0; i < allNotes.length; i++) {
-
           if (allNotes[i].id === chosen) {
               console.log(allNotes[i]);
-              // cleaner(allNotes,allNotes[i]);
-              // cleanDeep(allNotes[i]);
-              // removeOne(allNotes, (n) => n === allNotes[i]);
-              // const result = removeOne(array, (n) => n === 1)
               allNotes.splice(i, 1);  
-              // console.log(allNotes);     
           }
-
       }
     }
 
-    search(chosen,allNotes);
-    // console.log(allNotes);
+    searchChosen(chosen,allNotes);
 
     fs.writeFile('public/db/db.json', JSON.stringify(allNotes, null, 2), (err) => {
       if (err) throw err;
@@ -116,21 +105,6 @@ app.delete('/api/notes/:id', (req, res) => {
   });
 
 });
-
-
-// app.get("/api/characters/:character", function(req, res) {
-//   var chosen = req.params.character;
-
-//   console.log(chosen);
-
-//   for (var i = 0; i < characters.length; i++) {
-//     if (chosen === characters[i].routeName) {
-//       return res.json(characters[i]);
-//     }
-//   }
-
-//   return res.json(false);
-// });
 
 
 // Starts the server to begin listening
