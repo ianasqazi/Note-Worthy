@@ -3,6 +3,8 @@
 const express = require("express");
 const path = require("path");
 const fs = require('fs');
+const shortid = require("shortid");
+
 
 var dbFile = require("./public/db/db.json");
 
@@ -47,9 +49,6 @@ app.get("/api/notes", function(req, res) {
 
 // POST 
 // Create New Note - takes in JSON input
-
-
-/*  POST REQUEST */
 app.post('/api/notes', (req, res) => {
   
     fs.readFile('public/db/db.json',(err, data) => {
@@ -60,6 +59,7 @@ app.post('/api/notes', (req, res) => {
       let newNote = {
         title: req.body.title,
         text: req.body.text,
+        id: shortid.generate()
       }
 
       allNotes.push(newNote);
@@ -72,7 +72,6 @@ app.post('/api/notes', (req, res) => {
     });
 
   });
-
 
 
 
