@@ -75,5 +75,5 @@ npm start
 
 ## Screenshots
 
-![screenshot](Samples/Screenshot_Nome.png)
-![screenshot](Samples/Screenshot_Notes.png)
+![screenshot](Samples/Screenshot_Home.png)
+![screenshot](Samples/Screenshot_notes.png)
