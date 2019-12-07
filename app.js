@@ -88,7 +88,6 @@ app.delete('/api/notes/:id', (req, res) => {
     function searchChosen(chosen, allNotes) {
       for (var i=0; i < allNotes.length; i++) {
           if (allNotes[i].id === chosen) {
-              console.log(allNotes[i]);
               allNotes.splice(i, 1);  
           }
       }
