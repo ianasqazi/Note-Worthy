@@ -13,7 +13,7 @@ An application that can be used to write, save, and delete notes. This applicati
 
 The application has been deployed on heroku. Click below to go to the link : 
 
-[Heroku App URL](https://github.com/ianasqazi/Note-Worthy)
+[Heroku App URL](https://note-worty.herokuapp.com/)
 
 ## Repository 
 
@@ -23,7 +23,7 @@ Click the link below to check the repository :
 
 ## Preview
 
-![screenrecording_Note_Worthy](/sample/screenrecording_DevProfile.gif)
+![screenrecording_Note_Worthy](/Samples/screenrecording.gif)
 
 ## Requirements
 
@@ -61,7 +61,7 @@ Run the following commands in your terminal window
 ```bash
 git clone https://github.com/ianasqazi/Note-Worthy.git
 
-cd Dev-Profile-Generator
+cd Note-Worthy
 
 npm install
 ```
@@ -73,6 +73,7 @@ npm start
 ```
 
 
-## PDF Output
+## Screenshots
 
-![screenshot](sample/screenshot.png)
+![screenshot](Samples/screenshot_home.png)
+![screenshot](Samples/screenshot_notes.png)
