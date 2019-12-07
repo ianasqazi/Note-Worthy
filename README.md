@@ -23,7 +23,7 @@ Click the link below to check the repository :
 
 ## Preview
 
-![screenrecording_Note_Worthy](Samples/screenrecording.gif)
+![screenrecording_Note_Worthy](Samples/Screenrecording.gif)
 
 ## Requirements
 
@@ -75,5 +75,5 @@ npm start
 
 ## Screenshots
 
-![screenshot](../Samples/screenshot_home.png)
-![screenshot](../Samples/screenshot_notes.png)
+![screenshot](Samples/Screenshot_Nome.png)
+![screenshot](Samples/Screenshot_Notes.png)
