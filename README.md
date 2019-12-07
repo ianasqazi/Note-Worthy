@@ -25,7 +25,7 @@ Click the link below to check the repository :
 
 ![screenrecording_Note_Worthy](Samples/Screenrecording.gif)
 
-## Requirements
+## Requirements for testing in your OWN environment
 
 For testing, you will need Node.js and node global package, and also the following dependency packages installed in your environment.  
 
@@ -69,7 +69,7 @@ npm install
 All packages will be installed and now run the application with the command below : 
 
 ```bash
-npm start
+node app.js
 ```
 
 
