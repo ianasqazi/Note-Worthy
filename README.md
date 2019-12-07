@@ -23,7 +23,7 @@ Click the link below to check the repository :
 
 ## Preview
 
-![screenrecording_Note_Worthy](../Samples/screenrecording.gif)
+![screenrecording_Note_Worthy](Samples/screenrecording.gif)
 
 ## Requirements
 
