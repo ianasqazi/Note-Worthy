@@ -76,22 +76,6 @@ app.post('/api/notes', (req, res) => {
   });
 
 
-// PUT : Update the selected note from ID and render remaining notes
-// =============================================================
-
-app.put('/api/notes/:id', (req, res) => {
-  let chosen = req.params.id;
-  fs.readFile("public/db/db.json", function (err,data) {
-
-    if (err) throw err;
-    let allNotes = JSON.parse(data);
-  })
-
-  fs.
-
-});
-
-
 // DELETE : Deletes the selected note from ID and render remaining notes
 // =============================================================
 
