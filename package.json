@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ianasqazi/Note-Worthy#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
